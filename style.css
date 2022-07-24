@@ -1,0 +1,15 @@
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+div {
+    border: 1px blue dashed;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
