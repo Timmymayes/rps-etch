@@ -14,9 +14,13 @@ activate():
 
 */
 
-let size = 100;
+let size = 16;
 let boardWidth = 960;
 let container = document.getElementById("container");
+let header = document.getElementById("header");
+let button = document.createElement("button");
+button.appendChild(document.createTextNode("Create a Custom Board"));
+button.addEventListener("click", createCustomBoard);
 let boardExists = false;
 
 function createBoard(numRows, parent) {
@@ -69,15 +73,48 @@ function createCell(width, cellID) {
   cell.classList.add("cell", "inactive");
   cell.style.width = widthProp;
   cell.style.height = widthProp;
+  cell.style.backgroundColor = "rgba(0,0,0,0)";
 
   return cell;
 }
 
-function activateCell(e) {
-  console.log(e.target);
-  e.target.classList.add("active");
-  e.target.classList.remove("inactive");
+function getRandomColor() {
+  let red = Math.floor(Math.random() * 255);
+  let blue = Math.floor(Math.random() * 255);
+  let green = Math.floor(Math.random() * 255);
+  return "rgb(" + red + ", " + blue + ", " + green + ")";
 }
 
-createBoard(size, container);
+function activateCell(e) {
+  //  e.target.classList.add("active");
+  //  e.target.classList.remove("inactive");
+  //  let color = getRandomColor();
+  let startColorValue = e.target.style.backgroundColor;
+  let colorValueSplit = startColorValue.split(",");
+  let transValueSplit = colorValueSplit[colorValueSplit.length - 1].split(")");
+  let transValue = Number(transValueSplit[0]);
+
+  if (transValue < 1) {
+    console.log(transValue);
+    transValue += 0.1;
+  }
+
+  let updatedColor = "rgba(0,0,0," + transValue + ")";
+  e.target.style.backgroundColor = updatedColor;
+
+  console.log(updatedColor);
+  //  e.target.style.background = color;
+}
+
+function createCustomBoard() {
+  let num = Number(prompt("What Size board would you like?"));
+
+  if (num <= 100 && num > 0) {
+    createBoard(num, container);
+  } else {
+    alert("Please enter a correct value");
+  }
+}
+
+header.appendChild(button);
 createBoard(size, container);

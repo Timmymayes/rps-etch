@@ -12,11 +12,18 @@ html {
 
 }
 
-#content {
+body {
     display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     align-content: center;
 }
+
+#header, #content {
+    flex: 1;
+    align-self: center;
+}
+
 
 #container {
     display: grid;
@@ -24,8 +31,9 @@ html {
     grid-template-columns: repeat(5, 192px);
     width: 960px;
     height: 960px;
+    padding-top: 60px;
 
-    border: 1px blue dashed;
+
 }
 
 .inactive {
