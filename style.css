@@ -5,11 +5,43 @@ html {
     box-sizing: inherit;
 }
 
-div {
+.cell {
+    width = 25px;
+    width = 25px;
+    border: 1px solid black;
+
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#container {
+    display: grid;
+    grid-template-rows: repeat(5, 192px);
+    grid-template-columns: repeat(5, 192px);
+    width: 960px;
+    height: 960px;
+
     border: 1px blue dashed;
 }
 
-.header {
-    display: flex;
-    justify-content: center;
+.inactive {
+    background: white;
 }
+
+.active {
+    background: black;
+}
+
+.header {
+    display: flex 1;
+    justify-content: center;
+    align-content: center;
+}
+
+
+
+
